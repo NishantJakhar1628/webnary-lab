@@ -714,3 +714,19 @@ a.nav-btn {
   text-decoration: none;
   display: inline-block;
 }
+/* FIX CLICK ISSUE */
+.primary-btn,
+.cta-primary {
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
+}
+.hero-buttons {
+  position: relative;
+  z-index: 20;
+}
+
+.primary-btn,
+.cta-primary {
+  pointer-events: auto;
+}
