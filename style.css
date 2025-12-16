@@ -11,9 +11,15 @@ html {
 }
 
 body {
-  background: #0b0b0b;
   color: #ffffff;
+  background:
+    radial-gradient(at 15% 20%, rgba(14, 165, 233, 0.18), transparent 45%),
+    radial-gradient(at 85% 25%, rgba(250, 204, 21, 0.18), transparent 40%),
+    radial-gradient(at 50% 85%, rgba(99, 102, 241, 0.18), transparent 45%),
+    linear-gradient(180deg, #050505 0%, #0a0a0a 50%, #020202 100%);
 }
+
+
 
 /* NAVBAR */
 .navbar {
@@ -57,6 +63,7 @@ body {
 
 /* HERO */
 .hero {
+  position: relative; /* IMPORTANT */
   max-width: 1200px;
   margin: auto;
   padding: 80px 24px;
@@ -65,6 +72,19 @@ body {
   align-items: center;
   gap: 60px;
 }
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(250, 204, 21, 0.15),
+    transparent 60%
+  );
+  z-index: -1;
+}
+
 
 .hero-content h1 {
   font-size: 52px;
@@ -413,7 +433,7 @@ body {
 .pricing {
   max-width: 1200px;
   margin: auto;
-  padding: 140px 24px;
+  padding: 180px 24px;
 }
 
 .pricing-header {
@@ -714,19 +734,19 @@ a.nav-btn {
   text-decoration: none;
   display: inline-block;
 }
-/* FIX CLICK ISSUE */
-.primary-btn,
-.cta-primary {
-  pointer-events: auto;
+section {
+  scroll-margin-top: 100px;
   position: relative;
-  z-index: 10;
+  z-index: 1;
 }
-.hero-buttons {
-  position: relative;
-  z-index: 20;
+.nav-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
 }
 
-.primary-btn,
-.cta-primary {
-  pointer-events: auto;
+/* Optional: slightly less emphasis for Services */
+.nav-btn.secondary {
+  background: #facc15;
+  opacity: 0.9;
 }

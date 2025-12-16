@@ -23,18 +23,25 @@
 <body>
 
   <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="nav-container">
+<header class="navbar">
+  <div class="nav-container">
+    <a href="index.html">
       <img src="assets/logo.jpeg" alt="Webnary Lab Logo" class="logo" />
-      <a href="#contact" class="nav-btn">Get Started</a>
+    </a>
+
+    <div class="nav-actions">
+      <a href="services.html" class="nav-btn secondary">Services</a>
+      <a href="contact.html" class="nav-btn">Get Started</a>
+      <a href="portfolio.html" class="nav-btn secondary">Portfolio</a>
     </div>
-  </header>
+  </div>
+</header>
 
   <!-- NAVBAR SPACER -->
   <div class="nav-spacer"></div>
 
   <!-- HERO SECTION -->
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="hero-content">
       <h1>We Design & Build<br><span>Modern Digital Experiences</span></h1>
       <p>
@@ -43,11 +50,11 @@
       </p>
 
       <div class="hero-buttons">
- <a href="consultation.html" class="primary-btn">
+        <button class="cta-primary" onclick="location.href='contact.html'">
   Get Free Consultation
-</a>
+</button>
 
-        <a href="#portfolio" class="secondary-btn">View Portfolio</a>
+        <a href="portfolio.html" class="secondary-btn">View Portfolio</a>
       </div>
     </div>
 
@@ -55,96 +62,7 @@
       <img src="assets/hero.png" alt="Hero Visual" />
     </div>
   </section>
-  <!-- SERVICES SECTION -->
-<section class="services fade-up">
-  <div class="services-header">
-    <h2>What We Do Best</h2>
-    <p>
-      We help startups and growing brands build strong digital presence
-      through design, development, and strategy.
-    </p>
-  </div>
-
-  <div class="services-grid">
-    <div class="service-card">
-      <h3>UI / UX Design</h3>
-      <p>
-        Clean, intuitive and conversion-focused interfaces that look great
-        on all devices.
-      </p>
-    </div>
-
-    <div class="service-card">
-      <h3>Web Development</h3>
-      <p>
-        Fast, scalable, and secure websites built using modern technologies.
-      </p>
-    </div>
-
-    <div class="service-card">
-      <h3>Graphic Design</h3>
-      <p>
-        Creative visuals, branding assets, and social media designs
-        that stand out.
-      </p>
-    </div>
-
-    <div class="service-card">
-      <h3>Brand Identity</h3>
-      <p>
-        Logos, color systems, and brand guidelines crafted for recognition
-        and trust.
-      </p>
-    </div>
-
-    <div class="service-card">
-      <h3>SEO & Performance</h3>
-      <p>
-        Optimized structure and performance to help your website rank
-        better.
-      </p>
-    </div>
-
-    <div class="service-card">
-      <h3>Ongoing Support</h3>
-      <p>
-        Long-term support and improvements so your website grows with
-        your business.
-      </p>
-    </div>
-  </div>
-</section>
-<!-- PORTFOLIO SECTION -->
-<section class="portfolio fade-up" id="portfolio">
-  <div class="portfolio-header">
-    <h2>Selected Work</h2>
-    <p>
-      A glimpse of projects and designs we’ve crafted for brands
-      across different industries.
-    </p>
-  </div>
-
-  <div class="portfolio-grid">
-    <div class="portfolio-item">
-      <img src="assets/work-1.png" alt="Project 1" />
-    </div>
-    <div class="portfolio-item">
-      <img src="assets/work-2.png" alt="Project 2" />
-    </div>
-    <div class="portfolio-item">
-      <img src="assets/work-3.png" alt="Project 3" />
-    </div>
-    <div class="portfolio-item">
-      <img src="assets/work-4.png" alt="Project 4" />
-    </div>
-    <div class="portfolio-item">
-      <img src="assets/work-5.png" alt="Project 5" />
-    </div>
-    <div class="portfolio-item">
-      <img src="assets/work-6.png" alt="Project 6" />
-    </div>
-  </div>
-</section>
+  
 <!-- WHY CHOOSE US -->
 <section class="why-choose fade-up">
   <div class="why-header">
@@ -247,7 +165,7 @@
   </div>
 </section>
 <!-- PRICING -->
-<section class="pricing fade-up">
+<section class="pricing fade-up" id="pricing">
   <div class="pricing-header">
     <h2>Simple & Transparent Pricing</h2>
     <p>
@@ -310,53 +228,9 @@
 
   </div>
 </section>
-<!-- FINAL CTA -->
-<section class="final-cta fade-up">
-  <div class="cta-content">
-    <h2>
-      Ready to Build a <span>Powerful Online Presence</span>?
-    </h2>
-    <p>
-      Let’s turn your idea into a modern, high-performing website
-      that helps your brand grow.
-    </p>
-
-    <div class="cta-buttons">
-  <a href="consultation.html" class="cta-primary">
-  Get Free Consultation
-</a>
-
-      <button class="cta-secondary">Contact Us</button>
-    </div>
-  </div>
-</section>
-<!-- CONTACT -->
-<section class="contact fade-up" id="contact">
-  <h2>Contact Us</h2>
-
-  <form action="https://formsubmit.co/nishantjakhar1628@gmail.com" method="POST" class="contact-form">
-    
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
-
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" required></textarea>
-
-    <button type="submit">Send Message</button>
-  </form>
-
-  <a
-    href="https://wa.me/9466745730"
-    class="whatsapp-btn"
-    target="_blank"
-  >
-    Chat on WhatsApp
-  </a>
-</section>
-
 
 <script src="script.js"></script>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-container">
@@ -373,11 +247,12 @@
     <!-- LINKS -->
     <div class="footer-links">
       <h4>Company</h4>
-      <a href="#">Home</a>
-      <a href="#">Services</a>
-      <a href="#">Work</a>
-      <a href="#">Pricing</a>
-      <a href="#">Contact</a>
+<a href="#home">Home</a>
+<a href="services.html">Services</a>
+<a href="portfolio.html">portfolio</a>
+<a href="#pricing">Pricing</a>
+<a href="contact.html">Contact</a>
+
     </div>
 
     <!-- SERVICES -->
@@ -390,13 +265,32 @@
     </div>
 
     <!-- CONTACT -->
-    <div class="footer-links">
-      <h4>Contact</h4>
-      <a href="#">hello@webnary.lab</a>
-      <a href="#">Instagram</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">WhatsApp</a>
-    </div>
+<div class="footer-links">
+  <h4>Contact</h4>
+
+  <!-- Email
+  <a href="nishantjakhar1628@gmail.com">gmail</a>-->
+
+  <!-- Instagram -->
+  <a href="https://instagram.com/webnary.lab" target="_blank" rel="noopener">
+    Instagram
+  </a>
+
+  <!-- LinkedIn (replace if you have it)
+  <a href="https://linkedin.com" target="_blank" rel="noopener">
+    LinkedIn
+  </a>-->
+
+  <!-- WhatsApp -->
+  <a
+    href="https://wa.me/9466745730"
+    target="_blank"
+    rel="noopener"
+  >
+    WhatsApp
+  </a>
+</div>
+
 
   </div>
 
