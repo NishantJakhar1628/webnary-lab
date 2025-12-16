@@ -750,3 +750,176 @@ section {
   background: #facc15;
   opacity: 0.9;
 }
+/* MOBILE NAVBAR FIX */
+@media (max-width: 600px) {
+  .nav-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 6px;
+  }
+
+  .logo {
+    height: 34px;
+  }
+
+  .nav-actions {
+    gap: 10px;
+  }
+}
+/* =========================
+   MOBILE OPTIMIZATION
+========================= */
+@media (max-width: 768px) {
+
+  /* HERO TEXT */
+  .hero-content h1 {
+    font-size: 34px;
+    line-height: 1.25;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+  }
+
+  /* HERO IMAGE */
+  .hero-visual img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 14px;
+  }
+
+  /* SECTION HEADINGS */
+  section h2 {
+    font-size: 30px;
+  }
+
+  /* PARAGRAPHS */
+  section p {
+    font-size: 14px;
+  }
+
+  /* SERVICE / CARD TEXT */
+  .service-card h3,
+  .why-card h3,
+  .pricing-card h3 {
+    font-size: 18px;
+  }
+
+  .service-card p,
+  .why-card p,
+  .pricing-card ul li {
+    font-size: 14px;
+  }
+
+  /* TESTIMONIAL TEXT */
+  .testimonial-text {
+    font-size: 14px;
+  }
+
+  /* PORTFOLIO IMAGES */
+  .portfolio-item img {
+    height: auto;
+    object-fit: cover;
+  }
+}
+/* =========================
+   MOBILE COMPACT LAYOUT
+========================= */
+@media (max-width: 768px) {
+
+  /* Reduce section spacing */
+  section {
+    padding: 70px 18px !important;
+  }
+
+  /* HERO spacing */
+  .hero {
+    padding: 60px 18px !important;
+    gap: 32px;
+  }
+
+  /* Reduce card padding */
+  .service-card,
+  .why-card,
+  .testimonial-card,
+  .pricing-card {
+    padding: 22px;
+    border-radius: 14px;
+  }
+
+  /* Reduce portfolio card size */
+  .portfolio-item {
+    border-radius: 14px;
+  }
+
+  /* Reduce grid gaps */
+  .services-grid,
+  .portfolio-grid,
+  .why-grid,
+  .testimonials-grid,
+  .pricing-grid {
+    gap: 18px;
+  }
+
+  /* Reduce pricing scale effect */
+  .pricing-card.featured {
+    transform: scale(1);
+  }
+
+  /* Reduce CTA button size */
+  .primary-btn,
+  .secondary-btn,
+  .pricing-btn,
+  .cta-primary,
+  .cta-secondary {
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+}
+/* =========================
+   MOBILE FOOTER ULTRA COMPACT
+========================= */
+@media (max-width: 768px) {
+
+  /* Overall footer height */
+  .footer {
+    padding: 36px 16px 16px; /* reduced height */
+  }
+
+  /* Grid spacing */
+  .footer-container {
+    gap: 20px;
+  }
+
+  /* Brand logo */
+  .footer-brand img {
+    height: 26px;
+    margin-bottom: 8px;
+  }
+
+  /* Brand text */
+  .footer-brand p {
+    font-size: 11px;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+
+  /* Section titles */
+  .footer-links h4 {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  /* Footer links */
+  .footer-links a {
+    font-size: 11px;
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  /* Bottom copyright */
+  .footer-bottom {
+    margin-top: 18px;
+    font-size: 10px;
+  }
+}
