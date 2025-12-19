@@ -41,11 +41,7 @@
                 <li>Delivery in X days</li>
               </ul>
               <p class="price">₹4,999</p>
-              <a href="https://wa.me/919466745730?text=Hi%2C%20I%27m%20interested%20in%20the%20Starter%20plan%20%28%E2%82%B94%2C999%29.%20I%20need%20a%201%E2%80%932%20page%20website."
-                target="_blank" class="plan-btn whatsapp-btn">
-                <i class="fab fa-whatsapp"></i>
-                Get Started
-              </a>
+              <button class="plan-btn" onclick="openStarterModal()">Get Started</button>
             </div>
             <div class="pricing-card popular">
               <div class="popular-badge">Most Popular</div>
@@ -104,6 +100,41 @@
           <div class="form-group">
             <label for="proIdea">Website Idea</label>
             <textarea id="proIdea" name="idea"
+              placeholder="Describe your website idea, goals, and any specific features you need..." rows="4"
+              required></textarea>
+          </div>
+          <button type="submit" class="book-call-btn">
+            <i class="fas fa-phone"></i>
+            Book a Free Call
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Starter Plan Modal -->
+  <div id="starterModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Get Started with Starter Plan</h2>
+        <span class="close-btn" onclick="closeStarterModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p>Tell us about your project and we'll schedule a free consultation call.</p>
+        <form id="starterForm" class="starter-form">
+          <div class="form-group">
+            <label for="starterName">Full Name</label>
+            <input type="text" id="starterName" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="starterEmail">Email Address</label>
+            <input type="email" id="starterEmail" name="email" placeholder="your.email@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="starterIdea">Website Idea</label>
+            <textarea id="starterIdea" name="idea"
               placeholder="Describe your website idea, goals, and any specific features you need..." rows="4"
               required></textarea>
           </div>

@@ -67,11 +67,28 @@ function closeProModal() {
     document.body.style.overflow = 'auto'; // Restore scrolling
 }
 
+// Starter Plan Modal Functions
+function openStarterModal() {
+    const modal = document.getElementById('starterModal');
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeStarterModal() {
+    const modal = document.getElementById('starterModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore scrolling
+}
+
 // Close modal when clicking outside
 window.onclick = function (event) {
-    const modal = document.getElementById('proModal');
-    if (event.target === modal) {
+    const proModal = document.getElementById('proModal');
+    const starterModal = document.getElementById('starterModal');
+    if (event.target === proModal) {
         closeProModal();
+    }
+    if (event.target === starterModal) {
+        closeStarterModal();
     }
 }
 
@@ -93,6 +110,29 @@ document.getElementById('proForm').addEventListener('submit', function (e) {
 
     // Close the modal
     closeProModal();
+
+    // Reset form
+    this.reset();
+});
+
+// Handle Starter Plan form submission
+document.getElementById('starterForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('starterName').value;
+    const email = document.getElementById('starterEmail').value;
+    const idea = document.getElementById('starterIdea').value;
+
+    // Create WhatsApp message with form data
+    const message = `Hi! I'm ${name} (${email}). I'm interested in the Starter plan (₹4,999). My website idea: ${idea}. Can we schedule a free consultation call?`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/919466745730?text=${encodedMessage}`;
+
+    // Open WhatsApp with the message
+    window.open(whatsappUrl, '_blank');
+
+    // Close the modal
+    closeStarterModal();
 
     // Reset form
     this.reset();
