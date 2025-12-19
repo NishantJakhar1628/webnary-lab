@@ -1,97 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services | Webnary.lab</title>
-
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- SEO -->
-  <meta name="description" content="Explore Webnary.lab services including web development, UI/UX design, branding, and SEO.">
+  <title>Services - Webnary Lab</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <div class="nav-container">
-    <a href="index.html">
-      <img src="assets/logo.jpeg" alt="Webnary Lab Logo" class="logo" />
-    </a>
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="Work.html">Work</a></li>
+    </ul>
+  </nav>
 
-    <div class="nav-actions">
-      <a href="services.html" class="nav-btn secondary">Services</a>
-      <a href="contact.html" class="nav-btn">Get Started</a>
-      <a href="portfolio.html" class="nav-btn secondary">Portfolio</a>
+  <main class="scroll-container">
+
+    <!-- SERVICES -->
+    <section class="section services single-page">
+      <div class="services-content">
+        <h1>Our Services</h1>
+
+        <!-- PRICING -->
+        <div class="pricing-section">
+          <h2>Pricing Plans</h2>
+          <div class="pricing-grid">
+            <div class="pricing-card">
+              <h3>Starter</h3>
+              <p>1–2 page business website</p>
+              <ul>
+                <li>Responsive design (mobile-first)</li>
+                <li>Basic SEO setup</li>
+                <li>Fast loading & clean UI</li>
+                <li>Delivery in X days</li>
+              </ul>
+              <p class="price">₹4,999</p>
+              <a href="https://wa.me/919466745730?text=Hi%2C%20I%27m%20interested%20in%20the%20Starter%20plan%20%28%E2%82%B94%2C999%29.%20I%20need%20a%201%E2%80%932%20page%20website."
+                target="_blank" class="plan-btn whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+                Get Started
+              </a>
+            </div>
+            <div class="pricing-card popular">
+              <div class="popular-badge">Most Popular</div>
+              <h3>Pro</h3>
+              <p>5–10 page professional website</p>
+              <ul>
+                <li>Custom UI/UX</li>
+                <li>SEO-ready structure</li>
+                <li>Performance optimization</li>
+                <li>Contact forms + analytics</li>
+                <li>Priority support</li>
+              </ul>
+              <p class="price">₹9,999</p>
+              <button class="plan-btn" onclick="openProModal()">Get Started</button>
+            </div>
+            <div class="pricing-card">
+              <h3>Ultimate</h3>
+              <p>Fully custom website</p>
+              <ul>
+                <li>Unlimited pages (as needed)</li>
+                <li>Advanced animations</li>
+                <li>SEO + performance optimization</li>
+                <li>Long-term support & maintenance</li>
+              </ul>
+              <p class="price">Custom Pricing</p>
+              <button class="plan-btn">Let’s Talk</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pro Plan Modal -->
+  <div id="proModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Get Started with Pro Plan</h2>
+        <span class="close-btn" onclick="closeProModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p>Tell us about your project and we'll schedule a free consultation call.</p>
+        <form id="proForm" class="pro-form">
+          <div class="form-group">
+            <label for="proName">Full Name</label>
+            <input type="text" id="proName" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="proEmail">Email Address</label>
+            <input type="email" id="proEmail" name="email" placeholder="your.email@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="proIdea">Website Idea</label>
+            <textarea id="proIdea" name="idea"
+              placeholder="Describe your website idea, goals, and any specific features you need..." rows="4"
+              required></textarea>
+          </div>
+          <button type="submit" class="book-call-btn">
+            <i class="fas fa-phone"></i>
+            Book a Free Call
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-</header>
 
 
-<div class="nav-spacer"></div>
 
-<!-- SERVICES PAGE -->
-<section class="services fade-up">
-  <div class="services-header">
-    <h2>Our Services</h2>
-    <p>
-      We provide end-to-end digital solutions to help brands
-      grow, scale, and stand out online.
-    </p>
-  </div>
-
-  <div class="services-grid">
-    <div class="service-card">
-      <h3>UI / UX Design</h3>
-      <p>
-        User-first designs focused on clarity, accessibility,
-        and conversions across all devices.
-      </p>
-    </div>
-
-    <div class="service-card">
-      <h3>Web Development</h3>
-      <p>
-        High-performance websites built with clean code,
-        modern tools, and scalable architecture.
-      </p>
-    </div>
-
-    <div class="service-card">
-      <h3>Graphic Design</h3>
-      <p>
-        Brand visuals, social media creatives, and marketing
-        assets designed to grab attention.
-      </p>
-    </div>
-
-    <div class="service-card">
-      <h3>Brand Identity</h3>
-      <p>
-        Logo systems, color palettes, and brand guidelines
-        that create trust and recognition.
-      </p>
-    </div>
-
-    <div class="service-card">
-      <h3>SEO & Performance</h3>
-      <p>
-        Technical SEO, page speed optimization,
-        and best practices for better rankings.
-      </p>
-    </div>
-
-    <div class="service-card">
-      <h3>Maintenance & Support</h3>
-      <p>
-        Ongoing updates, improvements, and support
-        to keep your website running smoothly.
-      </p>
-    </div>
-  </div>
-</section>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
+
 </html>
