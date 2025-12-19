@@ -1293,3 +1293,108 @@ body:has(main:not(.scroll-container)) {
 .services-page {
   background: radial-gradient(circle at top, #0c1a24, #000);
 }
+
+@media (max-width: 768px) {
+
+  /* 2 cards per row on mobile */
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* Make cards slightly compact */
+  .process-card {
+    padding: 24px 16px;
+  }
+
+  .process-card h3 {
+    font-size: 18px;
+  }
+
+  .process-card p {
+    font-size: 14px;
+  }
+
+  /* Center the CTA at the bottom */
+  .process-cta {
+    margin-top: 40px;
+    text-align: center;
+  }
+}
+/* ============================= */
+/* MOBILE FIX — CTA BELOW BOXES */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  .process {
+    flex-direction: column;
+  }
+
+  .process-content {
+    width: 100%;
+  }
+
+  .process-cta {
+    width: 100%;
+    margin-top: 40px;
+    text-align: center;
+  }
+}
+/* ============================= */
+/* MOBILE — COMPACT FOOTER */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  .footer {
+    padding: 24px 16px 12px;
+  }
+
+  /* Remove decorative wave on mobile */
+  .footer-wave {
+    display: none;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Smaller logo */
+  .footer-logo img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 8px;
+  }
+
+  .footer-logo p {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .footer-content {
+    gap: 12px;
+  }
+
+  .footer-section h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .footer-section li {
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+
+  .footer-section a {
+    font-size: 13px;
+  }
+
+  .footer-bottom {
+    margin-top: 12px;
+    padding-top: 8px;
+    font-size: 11px;
+  }
+}
