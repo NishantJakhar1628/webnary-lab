@@ -103,7 +103,7 @@ document.getElementById('proForm').addEventListener('submit', function (e) {
     // Create WhatsApp message with form data
     const message = `Hi! I'm ${name} (${email}). I'm interested in the Pro plan (₹9,999). My website idea: ${idea}. Can we schedule a free consultation call?`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/919466745730?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/918491846653?text=${encodedMessage}`;
 
     // Open WhatsApp with the message
     window.open(whatsappUrl, '_blank');
@@ -126,7 +126,7 @@ document.getElementById('starterForm').addEventListener('submit', function (e) {
     // Create WhatsApp message with form data
     const message = `Hi! I'm ${name} (${email}). I'm interested in the Starter plan (₹4,999). My website idea: ${idea}. Can we schedule a free consultation call?`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/919466745730?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/918491846653?text=${encodedMessage}`;
 
     // Open WhatsApp with the message
     window.open(whatsappUrl, '_blank');
