@@ -1398,3 +1398,64 @@ body:has(main:not(.scroll-container)) {
     font-size: 11px;
   }
 }
+/* ============================= */
+/* MOBILE — DESKTOP-LIKE HERO */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  /* HERO must fill screen */
+  .hero {
+    min-height: 100vh;
+    height: 100vh;
+    padding-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Perfect center alignment */
+  .hero-content {
+    text-align: center;
+    padding: 0 20px;
+    max-width: 420px;
+  }
+
+  /* Logo scale */
+  .avatar {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 24px;
+  }
+
+  /* Headline scale — NOT stacked */
+  .hero h1 {
+    font-size: 28px;
+    line-height: 1.35;
+    margin-bottom: 12px;
+  }
+
+  .hero p {
+    font-size: 14px;
+    opacity: 0.75;
+  }
+
+  /* Arrow stays visible */
+  .scroll-indicator {
+    margin-top: 32px;
+    font-size: 18px;
+  }
+
+  /* Navbar spacing fix */
+  .navbar {
+    top: 12px;
+  }
+}
+@media (max-width: 768px) {
+  .section:not(.hero) {
+    min-height: auto;
+    height: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
