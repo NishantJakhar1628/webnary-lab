@@ -1,169 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services - Webnary Lab</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebDesignBusiness",
-  "name": "Webnary Lab",
-  "url": "https://yourdomain.com",
-  "description": "Webnary Lab builds modern, fast, SEO-ready business websites.",
-  "areaServed": "India",
-  "sameAs": [
-    "https://www.instagram.com/webnary.lab"
-  ]
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Webnary Lab</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* --- GENERAL STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Inter", sans-serif; }
+        body { background-color: #0b0b0b; color: white; scrollbar-width: none; -ms-overflow-style: none; }
+        ::-webkit-scrollbar { display: none; }
+        a { text-decoration: none; color: white; }
+
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* --- NAVIGATION BAR (FIXED) --- */
+    
+        /* --- SERVICES GRID SECTION --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: 1px solid #222; 
+            margin-top: 40px;
+        }
+
+        .service-card {
+            padding: 80px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 400px;
+        }
+
+        /* Grid Lines */
+        .service-card:nth-child(odd) { border-right: 1px solid #222; }
+        .service-card:nth-child(-n+2) { border-bottom: 1px solid #222; }
+
+        .service-number {
+            color: #444;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: monospace;
+        }
+
+        .service-card h3 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            color: #888;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 90%;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .tag {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 14px;
+            border: 1px solid #333;
+            border-radius: 50px;
+            color: #666;
+            transition: 0.3s;
+        }
+
+        .tag:hover {
+            border-color: #fff;
+            color: #fff;
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            text-align: center;
+            padding: 150px 0;
+            border-top: 1px solid #222;
+        }
+
+        .cta-section h2 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: black;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 20px 40px;
+            border-radius: 50px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,255,255,0.2);
+        }
+
+        /* --- FOOTER --- */
+        .simple-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0;
+            border-top: 1px solid #222;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .footer-logo { font-weight: 800; color: white; font-size: 18px; }
+        .footer-links a { color: #666; margin: 0 15px; transition: 0.3s; }
+        .footer-links a:hover { color: white; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 20px; height: auto; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card:nth-child(odd) { border-right: none; }
+            .service-card { border-bottom: 1px solid #222; }
+            .service-card:last-child { border-bottom: none; }
+            .cta-section h2 { font-size: 42px; }
+            .simple-footer { flex-direction: column; gap: 20px; text-align: center; }
+        }
+   /* --- ANIMATED BACKGROUND --- */
+/* The container that holds the background */
+.context {
+    width: 100%;
+    position: absolute;
+    top: 50vh;
 }
-</script>
 
+.area {
+    /* OLD BLACK BACKGROUND (Removed) */
+    /* background: #0b0b0b; */
+
+    /* NEW COLOR BACKGROUND */
+    /* A deep gradient from dark blue to purple */
+    background: linear-gradient(to bottom right, #050a14, #1a1a40, #270042);
+    
+    width: 100%;
+    height: 100vh;
+    position: fixed; /* Fixed so it stays put while you scroll */
+    top: 0;
+    left: 0;
+    z-index: -1; /* Behind everything */
+}
+
+.circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.circles li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Keep squares semi-transparent white */
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+}
+
+/* ... Keep the rest of the .circles li:nth-child and @keyframes animate code the same ... */
+
+/* Individual particle settings (Size, Position, Speed) */
+.circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+.circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+.circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+.circles li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+.circles li:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+.circles li:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+.circles li:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
+.circles li:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+.circles li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
+.circles li:nth-child(10){ left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+
+/* The Movement Animation */
+@keyframes animate {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+    100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+    </style>
 </head>
-
 <body>
-
+<div class="area">
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="cursor-dot" data-cursor-dot></div>
+<div class="cursor-outline" data-cursor-outline></div>
   <nav class="navbar">
+    <div class="navbar-logo">
+      <img src="logo.jpeg" alt="Webnary Lab" />
+    </div>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="work.html">Work</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <!-- <li><a href="Work.html">Work</a></li> -->
+      <li><a href="contact.html">Work with us</a></li>
     </ul>
   </nav>
 
-  <main class="scroll-container services-page">
+    <div class="container">
 
-
-    <!-- SERVICES -->
-    <section class="section services">
-      <div class="services-content">
-        <h1>Our Services</h1>
-
-        <!-- PRICING -->
-        <div class="pricing-section">
-          <h2>Pricing Plans</h2>
-          <div class="pricing-grid">
-            <div class="pricing-card">
-              <h3>Starter</h3>
-              <p>1–2 page business website</p>
-              <ul>
-                <li>Responsive design (mobile-first)</li>
-                <li>Basic SEO setup</li>
-                <li>Fast loading & clean UI</li>
-                <li>Delivery in X days</li>
-              </ul>
-              <p class="price">₹7,999</p>
-              <button class="plan-btn" onclick="openStarterModal()">Get Started</button>
+        <section class="services-grid">
+            
+            <div class="service-card">
+                <div>
+                    <div class="service-number">01</div>
+                    <h3>Web Development</h3>
+                    <p>Cutting edge technology paired with clean architecture. We build lightning fast, scalable React applications.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">REACT</span>
+                    <span class="tag">NEXT.JS</span>
+                    <span class="tag">TYPESCRIPT</span>
+                    <span class="tag">NODE.JS</span>
+                </div>
             </div>
-            <div class="pricing-card popular">
-              <div class="popular-badge">Most Popular</div>
-              <h3>Pro</h3>
-              <p>5–10 page professional website</p>
-              <ul>
-                <li>Custom UI/UX</li>
-                <li>SEO-ready structure</li>
-                <li>Performance optimization</li>
-                <li>Contact forms + analytics</li>
-                <li>Priority support</li>
-              </ul>
-              <p class="price">₹15,999</p>
-              <button class="plan-btn" onclick="openProModal()">Get Started</button>
-            </div>
-            <div class="pricing-card">
-              <h3>Ultimate</h3>
-              <p>Fully custom website</p>
-              <ul>
-                <li>Unlimited pages (as needed)</li>
-                <li>Advanced animations</li>
-                <li>SEO + performance optimization</li>
-                <li>Long-term support & maintenance</li>
-              </ul>
-              <p class="price">Custom Pricing</p>
-              <a href="https://wa.me/918491846653?text=Hi%2C%20I%27m%20interested%20in%20the%20Ultimate%20plan.%20Let%27s%20discuss%20my%20custom%20website%20project."
-                target="_blank" class="plan-btn whatsapp-btn">
-                <i class="fab fa-whatsapp"></i>
-                Let’s Talk
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
 
-  <!-- Pro Plan Modal -->
-  <div id="proModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Get Started with Pro Plan</h2>
-        <span class="close-btn" onclick="closeProModal()">&times;</span>
-      </div>
-      <div class="modal-body">
-        <p>Tell us about your project and we'll schedule a free consultation call.</p>
-        <form id="proForm" class="pro-form">
-          <div class="form-group">
-            <label for="proName">Full Name</label>
-            <input type="text" id="proName" name="name" placeholder="Your full name" required>
-          </div>
-          <div class="form-group">
-            <label for="proEmail">Email Address</label>
-            <input type="email" id="proEmail" name="email" placeholder="your.email@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="proIdea">Website Idea</label>
-            <textarea id="proIdea" name="idea"
-              placeholder="Describe your website idea, goals, and any specific features you need..." rows="4"
-              required></textarea>
-          </div>
-          <button type="submit" class="book-call-btn">
-            <i class="fas fa-phone"></i>
-            Book a Free Call
-          </button>
-        </form>
-      </div>
+            <div class="service-card">
+                <div>
+                    <div class="service-number">02</div>
+                    <h3>Interaction Design</h3>
+                    <p>Motion is at our core. We create interfaces that feel alive and responsive to every user gesture.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">FRAMER MOTION</span>
+                    <span class="tag">GSAP</span>
+                    <span class="tag">THREE.JS</span>
+                    <span class="tag">SVG</span>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="service-number">03</div>
+                    <h3>UI/UX Strategy</h3>
+                    <p>Data-driven design decisions that prioritize user behavior and business conversions.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">FIGMA</span>
+                    <span class="tag">RESEARCH</span>
+                    <span class="tag">WIREFRAMING</span>
+                    <span class="tag">A/B TESTING</span>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="service-number">04</div>
+                    <h3>E-Commerce</h3>
+                    <p>Seamless shopping experiences with custom integrations for payments and inventory management.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag">SHOPIFY</span>
+                    <span class="tag">HEADLESS</span>
+                    <span class="tag">STRIPE</span>
+                    <span class="tag">LOGISTICS</span>
+                </div>
+            </div>
+
+        </section>
+
+
+        <section class="cta-section">
+            <h2>Ready to level up?</h2>
+            <a href="contact.html" class="cta-btn">Start a Project</a>
+        </section>
+
+
+        <footer class="simple-footer">
+            <div class="footer-logo">WEBNARY. LAB</div>
+            
+            <div class="footer-links">
+                <a style="color: white;" href="https://www.instagram.com/webnary.lab?__pwa=1#">Instagram</a>
+
+                <a style="color: white;" href="https://wa.me/918491846653">WhatsApp</a>
+            </div>
+
+            <div class="copyright" style="color: white;">
+                &copy; 2025 Webnary Lab. All Rights Reserved.
+            </div>
+        </footer>
+
     </div>
-  </div>
+<script>
+      const cursorDot = document.querySelector('[data-cursor-dot]');
+const cursorOutline = document.querySelector('[data-cursor-outline]');
 
+window.addEventListener("mousemove", function (e) {
+    const posX = e.clientX;
+    const posY = e.clientY;
 
+    // Dot follows instantly
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
 
-  <!-- Starter Plan Modal -->
-  <div id="starterModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Get Started with Starter Plan</h2>
-        <span class="close-btn" onclick="closeStarterModal()">&times;</span>
-      </div>
-      <div class="modal-body">
-        <p>Tell us about your project and we'll schedule a free consultation call.</p>
-        <form id="starterForm" class="starter-form">
-          <div class="form-group">
-            <label for="starterName">Full Name</label>
-            <input type="text" id="starterName" name="name" placeholder="Your full name" required>
-          </div>
-          <div class="form-group">
-            <label for="starterEmail">Email Address</label>
-            <input type="email" id="starterEmail" name="email" placeholder="your.email@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="starterIdea">Website Idea</label>
-            <textarea id="starterIdea" name="idea"
-              placeholder="Describe your website idea, goals, and any specific features you need..." rows="4"
-              required></textarea>
-          </div>
-          <button type="submit" class="book-call-btn">
-            <i class="fas fa-phone"></i>
-            Book a Free Call
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
+    // Outline follows with a slight animation (via CSS transition? No, we use animate for smoothness)
+    cursorOutline.animate({
+        left: `${posX}px`,
+        top: `${posY}px`
+    }, { duration: 500, fill: "forwards" });
+});
 
+// Optional: Make the cursor grow when hovering over links or buttons
+const interactiveElements = document.querySelectorAll('a, button, input, textarea');
 
-
-  <script src="script.js"></script>
+interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        document.body.classList.add('hovering');
+    });
+    el.addEventListener('mouseleave', () => {
+        document.body.classList.remove('hovering');
+    });
+});
+</script>
 </body>
-
 </html>
