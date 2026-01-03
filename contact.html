@@ -4,67 +4,566 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us - Webnary Lab</title>
+  <title>Work With Us – Webnary Lab</title>
+
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebDesignBusiness",
-  "name": "Webnary Lab",
-  "url": "https://yourdomain.com",
-  "description": "Webnary Lab builds modern, fast, SEO-ready business websites.",
-  "areaServed": "India",
-  "sameAs": [
-    "https://www.instagram.com/webnary.lab"
-  ]
-}
-</script>
 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: #0b0b0b;
+      color: #ffffff;
+      overflow-x: hidden;
+      /* Prevents scrollbars from the background effect */
+    }
+
+    /* --- NEW BACKGROUND EFFECT CSS --- */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      /* Behind everything */
+      pointer-events: none;
+      /* Allows clicking through it */
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      /* This creates the glow effect */
+      opacity: 0.4;
+      animation: float 10s infinite alternate ease-in-out;
+    }
+
+    .blob-1 {
+      top: -10%;
+      left: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: #1a237e;
+      /* Deep Indigo */
+      animation-duration: 12s;
+    }
+
+    .blob-2 {
+      bottom: -10%;
+      right: -10%;
+      width: 40vw;
+      height: 40vw;
+      background: #311b92;
+      /* Deep Purple */
+      animation-duration: 15s;
+      animation-delay: -2s;
+    }
+
+    .blob-3 {
+      top: 40%;
+      left: 40%;
+      width: 30vw;
+      height: 30vw;
+      background: #0d47a1;
+      /* Deep Blue */
+      opacity: 0.2;
+      animation-duration: 20s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      100% {
+        transform: translate(40px, -40px) scale(1.1);
+      }
+    }
+
+    /* -------------------------------- */
+
+    .contact-section {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 40px;
+      padding: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 180px;
+
+      /* IMPORTANT: Keeps content above the background */
+      position: relative;
+      z-index: 1;
+    }
+
+    .left {
+      max-width: 520px;
+    }
+
+    .left h1 {
+      font-size: 80px;
+      font-weight: 800;
+    }
+
+    .left h1 span {
+      color: #7a7a7a;
+      font-style: italic;
+    }
+
+    .subtitle {
+      margin-top: 20px;
+      max-width: 500px;
+      color: #b5b5b5;
+      line-height: 1.6;
+    }
+
+    .info {
+      margin-top: 60px;
+    }
+
+    .info div {
+      margin-bottom: 30px;
+    }
+
+    .info small {
+      color: #777;
+      letter-spacing: 2px;
+      font-size: 12px;
+    }
+
+    .info p {
+      margin-top: 8px;
+      font-size: 16px;
+    }
+
+    .right {
+      flex: 1;
+      /* Made background slightly transparent to show the glow behind it */
+      background: rgba(17, 17, 17, 0.7);
+      backdrop-filter: blur(10px);
+      /* Frosted glass effect */
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 50px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    input,
+    textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #333;
+      padding: 12px 0;
+      margin-bottom: 30px;
+      color: white;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-bottom: 1px solid #fff;
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 40px;
+      border: none;
+      background: white;
+      color: black;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      background: #eaeaea;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .contact-section {
+        flex-direction: column;
+        padding: 40px;
+      }
+
+      .left h1 {
+        font-size: 56px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .contact-section {
+        grid-template-columns: 1fr;
+        padding: 140px 24px 80px;
+        gap: 80px;
+      }
+
+      .left h1 {
+        font-size: 52px;
+      }
+    }
+
+
+
+    /* --- HIDE DEFAULT CURSOR --- */
+    body,
+    a,
+    button,
+    input,
+    textarea {
+      cursor: none !important;
+      /* Forces the system cursor to disappear */
+    }
+
+    /* --- CUSTOM CURSOR STYLES --- */
+    .cursor-dot,
+    .cursor-outline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 10000;
+      pointer-events: none;
+      /* REMOVED mix-blend-mode from here so the dot stays solid */
+    }
+
+    /* --- THE SMALL DOT (Permanent White) --- */
+    .cursor-dot {
+      width: 10px;
+      height: 10px;
+      background-color: rgb(253, 253, 253);
+      mix-blend-mode: normal;
+      /* Forces it to stay white */
+      z-index: 10001;
+      /* Ensures it sits ON TOP of the ring */
+    }
+
+    /* --- THE OUTER RING (Inverts colors) --- */
+    .cursor-outline {
+      width: 30px;
+      height: 30px;
+      background-color: rgb(255, 255, 255);
+      opacity: 1;
+      transition: transform 0.2s ease-out;
+      mix-blend-mode: difference;
+      /* Only the ring changes color now */
+    }
+
+    /* Hover Animation */
+    body.hovering .cursor-outline {
+      transform: translate(-50%, -50%) scale(1.5);
+    }
+
+    .context {
+      width: 100%;
+      position: absolute;
+      top: 50vh;
+    }
+
+    .area {
+      /* OLD BLACK BACKGROUND (Removed) */
+      /* background: #0b0b0b; */
+
+      /* NEW COLOR BACKGROUND */
+      /* A deep gradient from dark blue to purple */
+      background: linear-gradient(to bottom right, #050a14, #1a1a40, #270042);
+
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      /* Fixed so it stays put while you scroll */
+      top: 0;
+      left: 0;
+      z-index: -1;
+      /* Behind everything */
+    }
+
+    .circles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    .circles li {
+      position: absolute;
+      display: block;
+      list-style: none;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      /* Keep squares semi-transparent white */
+      animation: animate 25s linear infinite;
+      bottom: -150px;
+    }
+
+    /* ... Keep the rest of the .circles li:nth-child and @keyframes animate code the same ... */
+
+    /* Individual particle settings (Size, Position, Speed) */
+    .circles li:nth-child(1) {
+      left: 25%;
+      width: 80px;
+      height: 80px;
+      animation-delay: 0s;
+    }
+
+    .circles li:nth-child(2) {
+      left: 10%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 2s;
+      animation-duration: 12s;
+    }
+
+    .circles li:nth-child(3) {
+      left: 70%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 4s;
+    }
+
+    .circles li:nth-child(4) {
+      left: 40%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 0s;
+      animation-duration: 18s;
+    }
+
+    .circles li:nth-child(5) {
+      left: 65%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 0s;
+    }
+
+    .circles li:nth-child(6) {
+      left: 75%;
+      width: 110px;
+      height: 110px;
+      animation-delay: 3s;
+    }
+
+    .circles li:nth-child(7) {
+      left: 35%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 7s;
+    }
+
+    .circles li:nth-child(8) {
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      animation-delay: 15s;
+      animation-duration: 45s;
+    }
+
+    .circles li:nth-child(9) {
+      left: 20%;
+      width: 15px;
+      height: 15px;
+      animation-delay: 2s;
+      animation-duration: 35s;
+    }
+
+    .circles li:nth-child(10) {
+      left: 85%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 0s;
+      animation-duration: 11s;
+    }
+
+    /* The Movement Animation */
+    @keyframes animate {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+      }
+
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebDesignBusiness",
+    "name": "Webnary Lab",
+    "url": "https://yourdomain.com",
+    "description": "Webnary Lab builds modern, fast, SEO-ready business websites.",
+    "areaServed": "India",
+    "sameAs": [
+      "https://www.instagram.com/webnary.lab"
+    ]
+  }
+  </script>
 </head>
 
 <body>
+  <div class="area">
+    <ul class="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="cursor-dot" data-cursor-dot></div>
+  <div class="cursor-outline" data-cursor-outline></div>
+  <div class="bg-animation">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
 
   <nav class="navbar">
+    <div class="navbar-logo">
+      <a href="#">
+        <img src="logo.jpeg" alt="Webnary Lab">
+      </a>
+    </div>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="services.html">Services</a></li>
+<<<<<<< HEAD
+      <li><a href="contact.html">Work with us</a></li>
+=======
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="Work.html">Work</a></li>
+      <li><a href="work.html">Work</a></li>
 
+>>>>>>> beef10fb187a6e8c60589835d1bcb385b969c27e
     </ul>
   </nav>
 
-  <main class="scroll-container">
+  <section class="contact-section">
 
-    <!-- CONTACT -->
-    <section class="section contact single-page">
-      <div class="contact-content">
-        <h1>Contact Us</h1>
-        <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
-        <form class="contact-form">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-          <button type="submit">
-            <i class="fas fa-paper-plane"></i>
-            Send Message
-          </button>
-        </form>
-        <div class="contact-methods">
-          <p>Or contact us directly:</p>
-          <a href="https://wa.me/918491846653?text=Hi%20Webnary%20Lab!%20I%20would%20like%20to%20discuss%20a%20project."
-            target="_blank" class="whatsapp-link">
-            <i class="fab fa-whatsapp"></i>
-            Message us on WhatsApp
-          </a>
+    <div class="left">
+      <h1>
+        LET'S <span>TALK.</span>
+      </h1>
+
+      <p class="subtitle">
+        Have an idea that needs a digital touch? We're always looking for ambitious partners to build something
+        incredible.
+      </p>
+
+      <div class="info">
+        <div>
+          <small>SOCIAL</small>
+          <p><a style="color: white; text-decoration: none; "
+              href="https://www.instagram.com/webnary.lab?__pwa=1#">Instagram</a> &nbsp;&nbsp; <a
+              style="color: white; text-decoration:none;" href="https://wa.me/918491846653">WhatsApp</a></p>
+        </div>
+
+        <div>
+          <small>OFFICE</small>
+          <p>Chandigarh</p>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
 
+    <div class="right">
+      <form class="contact-form" action="https://formsubmit.co/san943844@gmail.com" method="POST">
 
+        <input type="hidden" name="_captcha" value="false">
 
+        <label>YOUR NAME</label>
+        <input type="text" name="name" placeholder="John " required>
+
+        <label>EMAIL ADDRESS</label>
+        <input type="email" name="email" placeholder="john@example.com" required>
+
+        <label>TELL US ABOUT YOUR PROJECT</label>
+        <textarea name="message" placeholder="Briefly describe your goals..." required></textarea>
+
+        <button type="submit">SEND PROPOSAL</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="custom-cursor"></div>
+  <script>
+
+    const cursorDot = document.querySelector('[data-cursor-dot]');
+    const cursorOutline = document.querySelector('[data-cursor-outline]');
+
+    window.addEventListener("mousemove", function (e) {
+      const posX = e.clientX;
+      const posY = e.clientY;
+
+      // Dot follows instantly
+      cursorDot.style.left = `${posX}px`;
+      cursorDot.style.top = `${posY}px`;
+
+      // Outline follows with a slight animation (via CSS transition? No, we use animate for smoothness)
+      cursorOutline.animate({
+        left: `${posX}px`,
+        top: `${posY}px`
+      }, { duration: 500, fill: "forwards" });
+    });
+
+    // Optional: Make the cursor grow when hovering over links or buttons
+    const interactiveElements = document.querySelectorAll('a, button, input, textarea');
+
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        document.body.classList.add('hovering');
+      });
+      el.addEventListener('mouseleave', () => {
+        document.body.classList.remove('hovering');
+      });
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 
