@@ -137,32 +137,3 @@ document.getElementById('starterForm').addEventListener('submit', function (e) {
     // Reset form
     this.reset();
 });
-const cursorDot = document.querySelector('[data-cursor-dot]');
-const cursorOutline = document.querySelector('[data-cursor-outline]');
-
-window.addEventListener("mousemove", function (e) {
-    const posX = e.clientX;
-    const posY = e.clientY;
-
-    // Dot follows instantly
-    cursorDot.style.left = `${posX}px`;
-    cursorDot.style.top = `${posY}px`;
-
-    // Outline follows with a slight animation (via CSS transition? No, we use animate for smoothness)
-    cursorOutline.animate({
-        left: `${posX}px`,
-        top: `${posY}px`
-    }, { duration: 500, fill: "forwards" });
-});
-
-// Optional: Make the cursor grow when hovering over links or buttons
-const interactiveElements = document.querySelectorAll('a, button, input, textarea');
-
-interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        document.body.classList.add('hovering');
-    });
-    el.addEventListener('mouseleave', () => {
-        document.body.classList.remove('hovering');
-    });
-});

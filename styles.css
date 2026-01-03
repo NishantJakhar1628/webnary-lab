@@ -15,73 +15,45 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Hide scrollbar */
-.scroll-container::-webkit-scrollbar {
-  display: none;
-}
-.scroll-container {
-  scrollbar-width: none; /* Firefox */
-}
-
 
 /* NAVBAR */
 .navbar {
   position: fixed;
-  top: 0;
+  top: 20px;
   width: 100%;
-  background: transparent;
-  backdrop-filter: blur(10px);
-  z-index: 10;
-  transition: background 0.3s ease;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
-  /* Prevent nav text from breaking */
-
-    /* white-space: nowrap; */
-
-
+  justify-content: center;
+  z-index: 10;
+  transition: transform 0.3s ease;
 }
 
 .navbar.hidden {
-  transform: translateY(-100%);
-}
-
-.navbar-logo img {
-  height: 40px;
-  width: auto;
-  border-radius: 50%;
+  transform: translateY(-120%);
+  opacity: 0;
 }
 
 .navbar ul {
   display: flex;
-  gap: 40px;
+  gap: 24px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 40px;
+  backdrop-filter: blur(10px);
   list-style: none;
-  margin: 0;
-  padding: 20px 0;
 }
 
 .navbar li {
   font-size: 14px;
-  font-weight: 400;
 }
 
 .navbar a {
-  color: #fff;
-  text-decoration: none;
-  padding: 8px 16px;
-  transition: opacity 0.3s ease;
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.navbar a:hover {
   opacity: 0.7;
+  text-decoration: none;
+  color: inherit;
 }
 
 .navbar .active a {
   opacity: 1;
-  font-weight: 600;
 }
 
 /* SCROLL CONTAINER */
@@ -417,7 +389,7 @@ html, body {
   padding: 16px 32px;
   border: none;
   border-radius: 12px;
-  background: linear-gradient(135deg, #019c42 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
   font-size: 16px;
   font-weight: 600;
@@ -1486,47 +1458,4 @@ body:has(main:not(.scroll-container)) {
     padding-top: 60px;
     padding-bottom: 60px;
   }
-}
-/* --- HIDE DEFAULT CURSOR --- */
-body, a, button, input, textarea {
-    cursor: none !important;
-}
-
-/* --- CUSTOM CURSOR STYLES --- */
-/* --- CUSTOM CURSOR STYLES --- */
-/* --- SHARED STYLES (Positioning only) --- */
-.cursor-dot,
-.cursor-outline {
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    z-index: 10000;
-    pointer-events: none;
-    /* REMOVED mix-blend-mode from here so the dot stays solid */
-}
-
-/* --- THE SMALL DOT (Permanent White) --- */
-.cursor-dot {
-    width: 10px;
-    height: 10px;
-    background-color: white; 
-    mix-blend-mode: normal; /* Forces it to stay white */
-    z-index: 10001; /* Ensures it sits ON TOP of the ring */
-}
-
-/* --- THE OUTER RING (Inverts colors) --- */
-.cursor-outline {
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    opacity: 1;
-    transition: transform 0.2s ease-out;
-    mix-blend-mode: difference; /* Only the ring changes color now */
-}
-
-/* Hover Animation */
-body.hovering .cursor-outline {
-    transform: translate(-50%, -50%) scale(1.5);
 }
