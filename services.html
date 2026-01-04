@@ -17,16 +17,15 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 40px;
+            padding-top: 100px; /* FIX: Pushes content down so it doesn't hide behind Navbar */
         }
 
-        /* --- NAVIGATION BAR (FIXED) --- */
-    
         /* --- SERVICES GRID SECTION --- */
         .services-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             border-top: 1px solid #222; 
-            margin-top: 40px;
+            margin-top: 20px;
         }
 
         .service-card {
@@ -135,18 +134,31 @@
         .footer-links a { color: #666; margin: 0 15px; transition: 0.3s; }
         .footer-links a:hover { color: white; }
 
-        /* Responsive */
+        /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
-            .navbar { flex-direction: column; gap: 20px; height: auto; }
+            /* Fix Container Spacing on Mobile */
+            .container {
+                padding-top: 120px; /* More space for fixed navbar */
+            }
+
+            /* Fix Services Grid */
             .services-grid { grid-template-columns: 1fr; }
             .service-card:nth-child(odd) { border-right: none; }
             .service-card { border-bottom: 1px solid #222; }
             .service-card:last-child { border-bottom: none; }
+            
+            /* Typography fixes */
             .cta-section h2 { font-size: 42px; }
             .simple-footer { flex-direction: column; gap: 20px; text-align: center; }
+            
+            /* Fix Service Card Padding */
+            .service-card {
+                padding: 40px 20px;
+                min-height: auto;
+            }
         }
+
    /* --- ANIMATED BACKGROUND --- */
-/* The container that holds the background */
 .context {
     width: 100%;
     position: absolute;
@@ -154,19 +166,13 @@
 }
 
 .area {
-    /* OLD BLACK BACKGROUND (Removed) */
-    /* background: #0b0b0b; */
-
-    /* NEW COLOR BACKGROUND */
-    /* A deep gradient from dark blue to purple */
     background: linear-gradient(to bottom right, #050a14, #1a1a40, #270042);
-    
     width: 100%;
     height: 100vh;
-    position: fixed; /* Fixed so it stays put while you scroll */
+    position: fixed; 
     top: 0;
     left: 0;
-    z-index: -1; /* Behind everything */
+    z-index: -1; 
 }
 
 .circles {
@@ -186,14 +192,12 @@
     list-style: none;
     width: 20px;
     height: 20px;
-    background: rgba(255, 255, 255, 0.1); /* Keep squares semi-transparent white */
+    background: rgba(255, 255, 255, 0.1); 
     animation: animate 25s linear infinite;
     bottom: -150px;
 }
 
-/* ... Keep the rest of the .circles li:nth-child and @keyframes animate code the same ... */
-
-/* Individual particle settings (Size, Position, Speed) */
+/* Individual particle settings */
 .circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
 .circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
 .circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
@@ -205,17 +209,64 @@
 .circles li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
 .circles li:nth-child(10){ left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
 
-/* The Movement Animation */
 @keyframes animate {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-        border-radius: 0;
-    }
-    100% {
-        transform: translateY(-1000px) rotate(720deg);
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+    100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+}
+
+/* ========================================= */
+/* MOBILE MENU CSS (Ensures 3-Dots Works)   */
+/* ========================================= */
+/* Toggle Button */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    height: 22px;
+    width: 30px;
+    cursor: pointer;
+    z-index: 100;
+    align-items: flex-end;
+}
+.menu-toggle span {
+    display: block;
+    width: 5px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; } /* Show on Mobile */
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0); /* Transparent initially */
+        border: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
         opacity: 0;
-        border-radius: 50%;
+        visibility: hidden;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .nav-links.active {
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        max-height: 400px;
+        padding: 40px 0;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 }
     </style>
@@ -223,31 +274,29 @@
 <body>
 <div class="area">
     <ul class="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
     </ul>
 </div>
 <div class="cursor-dot" data-cursor-dot></div>
 <div class="cursor-outline" data-cursor-outline></div>
-  <nav class="navbar">
+
+ <nav class="navbar">
     <div class="navbar-logo">
       <img src="logo.jpeg" alt="Webnary Lab" />
     </div>
-    <ul>
+
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="services.html" class="active">Services</a></li>
-      <!-- <li><a href="Work.html">Work</a></li> -->
+      <li><a href="services.html">Services</a></li>
       <li><a href="contact.html">Work with us</a></li>
     </ul>
-  </nav>
+ </nav>
 
     <div class="container">
 
@@ -333,36 +382,6 @@
         </footer>
 
     </div>
-<script>
-      const cursorDot = document.querySelector('[data-cursor-dot]');
-const cursorOutline = document.querySelector('[data-cursor-outline]');
-
-window.addEventListener("mousemove", function (e) {
-    const posX = e.clientX;
-    const posY = e.clientY;
-
-    // Dot follows instantly
-    cursorDot.style.left = `${posX}px`;
-    cursorDot.style.top = `${posY}px`;
-
-    // Outline follows with a slight animation (via CSS transition? No, we use animate for smoothness)
-    cursorOutline.animate({
-        left: `${posX}px`,
-        top: `${posY}px`
-    }, { duration: 500, fill: "forwards" });
-});
-
-// Optional: Make the cursor grow when hovering over links or buttons
-const interactiveElements = document.querySelectorAll('a, button, input, textarea');
-
-interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        document.body.classList.add('hovering');
-    });
-    el.addEventListener('mouseleave', () => {
-        document.body.classList.remove('hovering');
-    });
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>

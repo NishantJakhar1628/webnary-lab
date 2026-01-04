@@ -1,168 +1,122 @@
-const scrollContainer = document.querySelector('.scroll-container');
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("Script loaded successfully");
 
-const scrollIndicator = document.querySelector('.scroll-indicator');
-if (scrollIndicator) {
-    scrollIndicator.addEventListener('click', function () {
-        scrollContainer.scrollBy({
-            top: window.innerHeight,
-            behavior: 'smooth'
+    /* ========================================= */
+    /* 1. MOBILE MENU (PRIORITY)                 */
+    /* ========================================= */
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinks) {
+        console.log("Menu elements found"); // Debugging check
+
+        // Toggle menu on click
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevents click from bubbling to document
+            navLinks.classList.toggle('active');
+            console.log("Menu clicked, active class toggled");
         });
-    });
-}
 
-// Hide/show navbar on scroll
-let lastScrollTop = 0;
-scrollContainer.addEventListener('scroll', function () {
-    const scrollTop = scrollContainer.scrollTop;
-    const navbar = document.querySelector('.navbar');
-    if (scrollTop > lastScrollTop && scrollTop > 50) { // hide on scroll down, after 50px
-        navbar.classList.add('hidden');
+        // Close menu when clicking anywhere else on the screen
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Close menu when a link inside it is clicked
+        navLinks.querySelectorAll('li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
     } else {
-        navbar.classList.remove('hidden');
+        console.error("Mobile menu elements NOT found. Check IDs in HTML.");
     }
-    lastScrollTop = scrollTop;
-});
 
-document.querySelectorAll('.navbar li').forEach(li => {
-    li.addEventListener('click', function () {
-        const text = this.textContent;
-        if (text === 'Contact') {
-            window.location.href = 'contact.html';
-        } else if (text === 'Home') {
-            window.location.href = 'index.html';
-        } else if (text === 'Services') {
-            window.location.href = 'services.html';
+    /* ========================================= */
+    /* 2. NAVBAR LOGIC                           */
+    /* ========================================= */
+    const navbar = document.querySelector('.navbar');
+    const scrollContainer = document.querySelector('.scroll-container');
+    
+    // Determine what is scrolling (the container or the window)
+    const scroller = scrollContainer || window;
+    let lastScrollTop = 0;
+
+    scroller.addEventListener('scroll', function () {
+        const scrollTop = scrollContainer ? scrollContainer.scrollTop : window.scrollY;
+
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+            if (navbar) navbar.classList.add('hidden');
+        } else {
+            if (navbar) navbar.classList.remove('hidden');
         }
+        lastScrollTop = scrollTop;
     });
-});
 
-// Set active navbar item based on current page
-const pageMap = {
-    'index.html': 'Home',
-    'contact.html': 'Contact',
-    'services.html': 'Services'
-};
-
-const currentPage = window.location.pathname.split('/').pop();
-const activeText = pageMap[currentPage];
-if (activeText) {
-    document.querySelectorAll('.navbar li').forEach(li => {
-        li.classList.remove('active');
-        if (li.textContent === activeText) {
-            li.classList.add('active');
-        }
-    });
-}
-
-// Pro Plan Modal Functions
-function openProModal() {
-    const modal = document.getElementById('proModal');
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-}
-
-function closeProModal() {
-    const modal = document.getElementById('proModal');
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Restore scrolling
-}
-
-// Starter Plan Modal Functions
-function openStarterModal() {
-    const modal = document.getElementById('starterModal');
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-}
-
-function closeStarterModal() {
-    const modal = document.getElementById('starterModal');
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Restore scrolling
-}
-
-// Close modal when clicking outside
-window.onclick = function (event) {
-    const proModal = document.getElementById('proModal');
-    const starterModal = document.getElementById('starterModal');
-    if (event.target === proModal) {
-        closeProModal();
+    /* ========================================= */
+    /* 3. ACTIVE LINK HIGHLIGHTING               */
+    /* ========================================= */
+    const pageMap = {
+        'index.html': 'Home',
+        'contact.html': 'Work with us',
+        'services.html': 'Services'
+    };
+    
+    let currentPage = window.location.pathname.split('/').pop();
+    if (currentPage === "") currentPage = "index.html";
+    const activeText = pageMap[currentPage];
+    
+    if (activeText) {
+        document.querySelectorAll('.navbar li a').forEach(link => {
+            if (link.textContent.trim() === activeText) {
+                link.classList.add('active');
+            }
+        });
     }
-    if (event.target === starterModal) {
-        closeStarterModal();
+
+    /* ========================================= */
+    /* 4. SCROLL INDICATOR (Arrow Button)        */
+    /* ========================================= */
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', function () {
+            const target = scrollContainer || window;
+            const scrollAmount = window.innerHeight;
+            
+            if (target.scrollBy) {
+                target.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+            } else {
+                window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+            }
+        });
     }
-}
 
-// Handle Pro Plan form submission
-document.getElementById('proForm').addEventListener('submit', function (e) {
-    e.preventDefault();
+    /* ========================================= */
+    /* 5. CUSTOM CURSOR (Last Priority)          */
+    /* ========================================= */
+    const cursorDot = document.querySelector('[data-cursor-dot]');
+    const cursorOutline = document.querySelector('[data-cursor-outline]');
 
-    const name = document.getElementById('proName').value;
-    const email = document.getElementById('proEmail').value;
-    const idea = document.getElementById('proIdea').value;
+    if (cursorDot && cursorOutline) {
+        window.addEventListener("mousemove", function (e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
 
-    // Create WhatsApp message with form data
-    const message = `Hi! I'm ${name} (${email}). I'm interested in the Pro plan (₹9,999). My website idea: ${idea}. Can we schedule a free consultation call?`;
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/918491846653?text=${encodedMessage}`;
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
 
-    // Open WhatsApp with the message
-    window.open(whatsappUrl, '_blank');
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
 
-    // Close the modal
-    closeProModal();
-
-    // Reset form
-    this.reset();
-});
-
-// Handle Starter Plan form submission
-document.getElementById('starterForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const name = document.getElementById('starterName').value;
-    const email = document.getElementById('starterEmail').value;
-    const idea = document.getElementById('starterIdea').value;
-
-    // Create WhatsApp message with form data
-    const message = `Hi! I'm ${name} (${email}). I'm interested in the Starter plan (₹4,999). My website idea: ${idea}. Can we schedule a free consultation call?`;
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/918491846653?text=${encodedMessage}`;
-
-    // Open WhatsApp with the message
-    window.open(whatsappUrl, '_blank');
-
-    // Close the modal
-    closeStarterModal();
-
-    // Reset form
-    this.reset();
-});
-const cursorDot = document.querySelector('[data-cursor-dot]');
-const cursorOutline = document.querySelector('[data-cursor-outline]');
-
-window.addEventListener("mousemove", function (e) {
-    const posX = e.clientX;
-    const posY = e.clientY;
-
-    // Dot follows instantly
-    cursorDot.style.left = `${posX}px`;
-    cursorDot.style.top = `${posY}px`;
-
-    // Outline follows with a slight animation (via CSS transition? No, we use animate for smoothness)
-    cursorOutline.animate({
-        left: `${posX}px`,
-        top: `${posY}px`
-    }, { duration: 500, fill: "forwards" });
-});
-
-// Optional: Make the cursor grow when hovering over links or buttons
-const interactiveElements = document.querySelectorAll('a, button, input, textarea');
-
-interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        document.body.classList.add('hovering');
-    });
-    el.addEventListener('mouseleave', () => {
-        document.body.classList.remove('hovering');
-    });
+        document.querySelectorAll('a, button, input, textarea, .menu-toggle').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+    }
 });
