@@ -174,152 +174,184 @@ html, body {
 }
 
 /* PROCESS */
+/* PROCESS SECTION (REDESIGN) */
 .process {
-  background: linear-gradient(180deg, #f8f9fa 0%, #eef1f5 100%);
-  color: #2d3748;
-  padding: 60px 40px;
-  /* reduced top space */
-  background:
-    linear-gradient(180deg, #f8f9fa 0%, #eef1f5 100%),
-    radial-gradient(circle at top, rgba(102, 126, 234, 0.06), transparent 60%);
-  background-blend-mode: overlay;
+  background: #000; /* Seamless match with Hero */
+  position: relative;
+  overflow: hidden;
+  padding: 100px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Background Ambient Glow */
+.process::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.15), transparent 70%);
+  z-index: 0;
+}
 
-.process-content {
+.process::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(118, 75, 162, 0.15), transparent 70%);
+  z-index: 0;
+}
+
+.process-container {
   max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Typography */
+.process-header {
   text-align: center;
-}
-
-.process h2 {
-  font-size: 42px;
-  font-weight: 600;
   margin-bottom: 80px;
-  background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: fadeInUp 1s ease-out 0.5s both;
 }
 
-.process-subtitle {
-  max-width: 620px;
-  margin: -50px auto 70px;
-  font-size: 16px;
-  color: #6b7280;
+.section-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  
+  /* The Fix: Keep both lines together like this */
+  -webkit-background-clip: text;
+  background-clip: text;         /* <--- Add this line to fix the warning */
+  
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 600px;
+  margin: 0 auto;
   line-height: 1.6;
 }
 
+/* Grid Layout */
 .process-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
-  animation: fadeInUp 1s ease-out 1s both;
+  gap: 30px;
+  margin-bottom: 60px;
 }
 
-.process-card {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  padding: 40px 30px;
+/* Glass Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  border-radius: 20px;
   position: relative;
-  transition: all 0.3s ease;
-  animation: fadeInUp 1s ease-out 1.2s both;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  /* Starting state for animation */
+  opacity: 0;
+  transform: translateY(50px); 
 }
 
-.process-card:nth-child(2) {
-  animation-delay: 1.4s;
+/* Reveal Animation Class (Added by JS) */
+.glass-card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.process-card:nth-child(3) {
-  animation-delay: 1.6s;
+.glass-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(102, 126, 234, 0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
-.process-card:nth-child(4) {
-  animation-delay: 1.8s;
-}
-
-.process-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
-  border-color: rgba(102, 126, 234, 0.4);
-}
-
-
-.step-number {
+.card-number {
+  font-size: 60px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.05);
   position: absolute;
-  top: -20px;
-  left: 30px;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: 700;
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  top: 10px;
+  right: 20px;
+  transition: all 0.3s ease;
 }
 
-.process-card:hover .step-number {
+.glass-card:hover .card-number {
+  color: rgba(102, 126, 234, 0.2);
   transform: scale(1.1);
-  box-shadow: 0 0 25px rgba(102, 126, 234, 0.6);
 }
 
-.process-card h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  color: #2d3748;
-}
-
-.process-card p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #4a5568;
-  margin: 0;
-}
-
-.process-cta {
-  margin-top: 70px;
-  text-align: center;
-  margin-top: 70px;
-  text-align: center;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.process-cta p {
-  font-size: 18px;
-  color: #4a5568;
-  margin-bottom: 20px;
-}
-
-.process-btn {
-  display: inline-block;
-  padding: 14px 36px;
-  border-radius: 30px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.card-content h3 {
+  font-size: 22px;
   color: #fff;
-  font-size: 15px;
+  margin-bottom: 15px;
   font-weight: 600;
+}
+
+.card-content p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+/* Button */
+.process-footer {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.process-footer p {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.neon-button {
+  display: inline-block;
+  padding: 16px 40px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #667eea;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
 }
 
-.process-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 40px rgba(102, 126, 234, 0.45);
+.neon-button:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: transparent;
+  box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+  transform: scale(1.05);
 }
 
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .section-title { font-size: 32px; }
+  .process-grid { grid-template-columns: 1fr; }
+  .process { padding: 60px 20px; }
+}
 
 /* Responsive Process */
 @media (max-width: 768px) {
@@ -1687,4 +1719,48 @@ body.hovering .cursor-outline {
 .menu-toggle.open span:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -6px);
   background-color: #ff4d4d; /* Turns red when open */
+}
+/* ========================================= */
+/* SERVICE PAGE ANIMATIONS                   */
+/* ========================================= */
+
+.service-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02); /* Very subtle dark background */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Thin grey border */
+  padding: 40px;
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth bounce */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* 1. The Hover Lift & Glow */
+.service-card:hover {
+  transform: translateY(-12px); /* Moves up */
+  background: rgba(255, 255, 255, 0.05); /* Slightly lighter */
+  border-color: #667eea; /* Purple border color */
+  box-shadow: 
+    0 20px 40px -5px rgba(0, 0, 0, 0.4), /* Shadow below */
+    0 0 30px -10px rgba(102, 126, 234, 0.3); /* Purple ambient glow */
+}
+
+/* 2. Animate the Title inside */
+.service-card h3 {
+  transition: color 0.3s ease;
+}
+
+.service-card:hover h3 {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(102, 126, 234, 0.5); /* Text glow */
+}
+
+/* 3. Button/Tag Highlight (if you have tags like React, NextJS) */
+.service-card:hover .tag {
+  background: rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.5);
+  color: #fff;
 }

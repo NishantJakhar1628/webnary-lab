@@ -1,6 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Script loaded successfully");
+/* ========================================= */
+    /* PROCESS CARD SCROLL ANIMATION             */
+    /* ========================================= */
+    const observerOptions = {
+        threshold: 0.1 // Triggers when 10% of the card is visible
+    };
 
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show'); // Adds CSS class to animate
+            }
+        });
+    }, observerOptions);
+
+    const hiddenCards = document.querySelectorAll('.hidden-card');
+    hiddenCards.forEach((el) => observer.observe(el));
     /* ========================================= */
     /* 1. MOBILE MENU (PRIORITY)                 */
     /* ========================================= */
