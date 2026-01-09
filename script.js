@@ -11,11 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Menu elements found"); // Debugging check
 
         // Toggle menu on click
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevents click from bubbling to document
-            navLinks.classList.toggle('active');
-            console.log("Menu clicked, active class toggled");
-        });
+       menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+    navLinks.classList.toggle('active');
+    
+    menuToggle.classList.toggle('open');  // <--- ADD THIS LINE HERE
+    
+    console.log("Menu clicked, active class toggled");
+});
 
         // Close menu when clicking anywhere else on the screen
         document.addEventListener('click', (e) => {

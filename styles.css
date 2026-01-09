@@ -1558,59 +1558,95 @@ body.hovering .cursor-outline {
 
 /* 2. Mobile View Settings */
 /* 2. Mobile View Settings (FIXED) */
+/* ========================================= */
+/* 2. PROFESSIONAL MOBILE OVERLAY MENU       */
+/* ========================================= */
+
 @media (max-width: 768px) {
-  /* Show the 3 dots */
+  
+  /* 1. Position the Menu Toggle (Hamburger) */
   .menu-toggle {
-    display: flex; 
+    display: flex;
+    z-index: 10001; /* Must be higher than the overlay */
+    position: relative;
   }
 
-  /* Style the list to hide initially */
+  /* 2. The Full Screen Overlay */
   .nav-links {
-    position: absolute;
-    top: 100%;
+    position: fixed; /* Locks it to the screen */
+    top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 5, 10, 0.95); /* Deep dark background */
+    backdrop-filter: blur(15px); /* Professional Blur Effect */
     
-    /* CRITICAL FIX: Transparent when closed so no black line appears */
-    background: rgba(10, 10, 10, 0); 
-    backdrop-filter: blur(0px);
-    border: none;
-    
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    padding: 0;
+    justify-content: center; /* Center vertically */
+    align-items: center;     /* Center horizontally */
+    gap: 40px;
     
-    /* Hiding mechanism */
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0; /* Make it invisible */
-    visibility: hidden; /* Remove it from click events */
-    
-    /* Smooth transition for all properties */
-    transition: all 0.4s ease-in-out;
+    /* Animation States - Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px); /* Starts slightly above */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none; /* User can't click hidden links */
+    z-index: 10000;
   }
 
-  /* Active State (When menu is open) */
+  /* 3. The Active (Open) State */
   .nav-links.active {
-    /* Only apply color/blur when actually open */
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    
-    max-height: 400px;
-    padding: 40px 0;
     opacity: 1;
     visibility: visible;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
-  .nav-links li a {
-    font-size: 18px;
-    font-weight: 500;
+  /* 4. The Links Typography */
+  .nav-links li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
   }
-}
-/* FORCE NAVBAR TO TOP ON MOBILE */
+  
+  /* Stagger animation: Links slide in one by one */
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+  .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
+  .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
+
+  .nav-links li a {
+    font-size: 32px; /* Much larger for mobile */
+    font-weight: 300;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Cool underline hover effect */
+  .nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  
+  .nav-links li a:hover::after {
+    width: 100%;
+  }
+}/* FORCE NAVBAR TO TOP ON MOBILE */
 @media (max-width: 768px) {
   .navbar {
     top: 0 !important;
@@ -1631,4 +1667,24 @@ body.hovering .cursor-outline {
   body, a, button, input, textarea {
     cursor: auto !important;
   }
+}
+/* ========================================= */
+/* HAMBURGER TO 'X' ANIMATION                */
+/* ========================================= */
+
+/* Top Line rotates 45 degrees */
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+  background-color: #ff4d4d; /* Turns red when open */
+}
+
+/* Middle Line fades away */
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+/* Bottom Line rotates -45 degrees */
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+  background-color: #ff4d4d; /* Turns red when open */
 }
